@@ -105,20 +105,20 @@ The Scanner will ignore the files listed in your `.gitignore` if you have one.
 
 ```jsonc
 {
-	// ... metadata
-	"domainReport": [
-		{
+  // ... metadata
+  "domainReport": [
+    {
       "filename": "app/javascripts/active_admin.js",
       "domains": [
         {
           "domain": "logo.clearbit.com",
-					"lineNumber": 10
-					"score": 0 // 0..100
+          "lineNumber": 10
+          "score": 0 // 0..100
         }
       ]
     },
-		// ... dependencies
-	]
+    // ... dependencies
+  ]
 }
 ```
 
@@ -126,34 +126,34 @@ The Scanner will ignore the files listed in your `.gitignore` if you have one.
 
 ```jsonc
 {
-	// ... metadata
-	// ... domains
-	"dependencyReport": [
+  // ... metadata
+  // ... domains
+  "dependencyReport": [
     {
       "filename": "package.json",
-			"language": "Javascript",
+      "language": "Javascript",
       "dependencies": [
-	      {
-	        "name": "axios",
+        {
+          "name": "axios",
           "version": "^0.18.0",
-					"lineNumber": 10
+          "lineNumber": 10
         },
-				// ...
-			]
-		},
-		{
-			"filename": "Gemfile.lock",
-			"language": "Ruby",
+        // ...
+      ]
+    },
+    {
+      "filename": "Gemfile.lock",
+      "language": "Ruby",
       "dependencies": [
-	      {
-	        "name": "stripe",
+        {
+          "name": "stripe",
           "version": "0.18.0",
-					"lineNumber": 10
+          "lineNumber": 10
         },
-				// ...
-			]
-		}
-	}
+        // ...
+      ]
+    }
+  }
 }
 ```
 
