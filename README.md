@@ -83,7 +83,7 @@ The Scanner will ignore the files listed in your `.gitignore` if you have one.
 
 ## Metadata
 
-```json
+```jsonc
 {
   "name": "Repository Name",
   "git": {
@@ -103,7 +103,7 @@ The Scanner will ignore the files listed in your `.gitignore` if you have one.
 
 ## Detected Domains
 
-```json
+```jsonc
 {
 	// ... metadata
 	"domainReport": [
@@ -124,7 +124,7 @@ The Scanner will ignore the files listed in your `.gitignore` if you have one.
 
 ## Detected Dependencies
 
-```json
+```jsonc
 {
 	// ... metadata
 	// ... domains
