@@ -1,24 +1,27 @@
 # PoC Scanner
 
+Thank you for participating in our Proof of Concept of our Codebase Audit tool. 
+
 ## How it works
 
 The Bearer Scanner binary is building a JSON file for each repository with the following info:
 
-- Metadata related to the repo (Git remote URL, last commit, ...)
+- Metadata related to the repo (Git remote URL, last commit, ...) 
 - The list of detected domains
 - The list of detected dependencies
+- You can find the complete list here https://links.bearer.sh/f637d
 
-The Scanner will go over all your files and look for patterns in your code that matches a domain.
+The Scanner will go over all your files and look for patterns in your code that matches a domain. It will create a ZIP archive with all the JSON files generated. You will need to send this file back to us at Bearer, so that we can perform further search and resolutions on our side. We will then load the results into a dashboard, where you will be able to retrieve all the collected data plus the informations we collected on our side.
 
 ## How to use it
 
-We provide a script that will allow to make it easy for you to generate a ZIP.
+You will find below options to runs the audit script.
 
 The script will:
 
 - Download the binary that will be used to generate the report
 - [Retrieve the repositories associated with your key and organization] (Option 2 to 5)
-- Generate the ZIP
+- Generate the ZIP archive
 
 ### Option 1
 
