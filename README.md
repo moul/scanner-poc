@@ -49,7 +49,7 @@ We currently support the following remote git repositories:
 * Gitlab
 * Self Hosted Gitlab
 
-The executable will download the list of repositories, run the scan and generate zip articat examples on how to use binary for each case is shown below.
+The executable will download the list of repositories, run the scan and generate zip artifact. Examples on how to use binary for each case is shown below.
 
 
 #### Github
