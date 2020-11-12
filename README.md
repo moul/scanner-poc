@@ -78,6 +78,10 @@ curl https://raw.githubusercontent.com/Bearer/scanner-poc/main/script.sh \
 | bash -s
 ```
 
+### Upload the script back to Bearer
+
+You just need to use our WeTransfer account. Go to https://bearer.wetransfer.com and upload it.
+
 # Annexes
 
 ## `.gitignore`
