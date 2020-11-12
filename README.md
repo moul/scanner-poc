@@ -58,7 +58,7 @@ The executable will download the list of repositories, run the scan and generate
 $ GITHUB_API_KEY=secret ~/.bearer/bearer-cli github mygithuborg/myrepo
 ```
 
-You can generate your `read:org` only github api key here: https://github.com/settings/tokens
+You can generate your `read:org` only GitHub API key here: https://github.com/settings/tokens
 
 **Note** for ssh github access you might need to update your global git configuration in `~/.gitconfig` file by adding the following line:
 ```toml
