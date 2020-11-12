@@ -15,13 +15,16 @@ The Scanner will go over all your files and look for patterns in your code that 
 
 ## How to use it
 
-You will find below options to runs the audit script.
+We provide a script that will download the binary to ~/.bearer/bearer-cli
 
-The script will:
-
-- Download the binary that will be used to generate the report
-- [Retrieve the repositories associated with your key and organization] (Option 2 to 5)
-- Generate the ZIP archive
+```bash
+./download.sh
+Downloading to ~/.bearer/bearer-cli
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 20.8M  100 20.8M    0     0  20.4M      0  0:00:01  0:00:01 --:--:-- 20.4M
+Please visit https://github.com/Bearer/scanner-poc/blob/main/README.md#how-to-use-it for the binary usage
+```
 
 ### Option 1
 
