@@ -14,7 +14,7 @@ The Scanner will go over all your files and look for patterns in your code that 
 
 ## How to use it
 
-We provide a script that will download the binary to ~/.bearer/bearer-cli
+We provide a script that will download the binary to `~/.bearer/bearer-cli`
 
 ```bash
 $ curl "https://raw.githubusercontent.com/Bearer/scanner-poc/main/download.sh" | bash -s
