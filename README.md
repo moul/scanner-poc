@@ -25,29 +25,32 @@ Downloading to ~/.bearer/bearer-cli
 100 20.8M  100 20.8M    0     0  20.4M      0  0:00:01  0:00:01 --:--:-- 20.4M
 Please visit https://github.com/Bearer/scanner-poc/blob/main/README.md#how-to-use-it for the binary usage
 ```
+**To update binary** simply run `./download.sh` script again. It will overwrite the existing `~/.bearer/bearer-cli` file and set the executable flags.
+
 ## Binary usage
 
-### Option 1
+In all cases the binary execution will generate the ZIP report in your working directory. You then can send this ZIP to Bearer.sh.
 
-You already have all the repositories locally.
+### Option 1 - you already have all the repositories locally. 
 
-You can simply run this script and list the repositories. This will generate a ZIP that you will be able to send us
+Run the binary passing the list of repository folders  
 
 ```bash
-$ curl https://raw.githubusercontent.com/Bearer/scanner-poc/main/script.sh \
-| bash -s -- <repository_1> [<repository_2>]
+$ mkdir report && cd report
+$ ~/.bearer/bearer-cli local <path_to_source_code_root_folder_1> <path_to_source_code_root_folder_2>
+$ ls
+bearer-cli.zip
 ```
 
-### Option 2 - GitHub
+### Option 2 - fetching repositories from Github
 
 You don't have the repositories locally and your code is on GitHub
 
 ```bash
-$ GITHUB=true \
-GITHUB_API_KEY=<read-access-token-to-list-your-repositories> \
-curl https://raw.githubusercontent.com/Bearer/scanner-poc/main/script.sh \
-| bash -s
+$ GITHUB_API_KEY=secret ~/.bearer/bearer-cli github 
 ```
+
+You can generate your github api key here: https://github.com/settings/tokens
 
 ### Option 3 - Self Hosted GitHub
 
