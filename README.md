@@ -1,12 +1,12 @@
 # PoC Scanner
 
-Thank you for participating in our Proof of Concept of our Codebase Audit tool. 
+Thank you for participating in our Proof of Concept of our Codebase Audit tool.
 
 ## How it works
 
 The Bearer Scanner binary is building a JSON file for each repository with the following info:
 
-- Metadata related to the repo (Git remote URL, last commit, ...) 
+- Metadata related to the repo (Git remote URL, last commit, ...)
 - The list of detected domains
 - The list of detected dependencies
 
@@ -30,9 +30,9 @@ Please visit https://github.com/Bearer/scanner-poc/blob/main/README.md#how-to-us
 
 In all cases the binary execution will generate the ZIP report in your working directory. You then can send this ZIP to Bearer.sh.
 
-### You already have all the repositories locally. 
+### You already have all the repositories locally.
 
-Run the binary passing the list of repository folders  
+Run the binary passing the list of repository folders
 
 ```bash
 $ ~/.bearer/bearer-cli local <path_to_source_code_root_folder_1> <path_to_source_code_root_folder_2>
@@ -41,7 +41,7 @@ bearer-cli.zip
 ```
 
 ### You don't have the repositories locally
-We currently support the following remote git repositories: 
+We currently support the following remote git repositories:
 * Github
 * Self Hosted Github
 * Gitlab
@@ -56,7 +56,7 @@ The executable will download the list of repositories, run the scan and generate
 $ GITHUB_TOKEN=secret ~/.bearer/bearer-cli github mygithuborg/myrepo
 ```
 
-You can generate your `read:org` only GitHub API key here: https://github.com/settings/tokens
+You can generate your `repo` only GitHub API key here: https://github.com/settings/tokens
 
 **Note** for ssh github access you might need to update your global git configuration in `~/.gitconfig` file by adding the following line:
 
@@ -70,7 +70,7 @@ You can generate your `read:org` only GitHub API key here: https://github.com/se
 Same as Option 2 except that you are have a Self Hosted version of GitHub
 
 ```bash
-$ GITHUB_URL=https://my.github.instance GITHUB_TOKEN=secret ~/.bearer/bearer-cli github mygithuborg/myrepo
+$ GITHUB_TOKEN=secret ~/.bearer/bearer-cli github --base "https://my.github.instance" mygithuborg/myrepo
 ```
 
 #### Gitlab
@@ -79,10 +79,12 @@ $ GITHUB_URL=https://my.github.instance GITHUB_TOKEN=secret ~/.bearer/bearer-cli
 $ GITLAB_TOKEN=secret ~/.bearer/bearer-cli gitlab mygitlaborg/myrepo
 ```
 
+You will need a Gitlab API token with `read_api` scope.
+
 ### Self Hosted GitLab
 
 ```bash
-$ GITLAB_URL=https://my.gitlab.instance GITLAB_TOKEN=secret ~/.bearer/bearer-cli mygitluborg/myrepo
+$ GITLAB_TOKEN=secret ~/.bearer/bearer-cli gitlab --base "https://my.gitlab.instance" mygitluborg/myrepo
 ```
 
 ### Upload the script back to Bearer
