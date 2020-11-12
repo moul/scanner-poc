@@ -182,6 +182,8 @@ The Scanner will ignore the files listed in your `.gitignore` if you have one.
 
 ## Dependencies
 
+<details>
+
 ### Ruby
 
 - Gemfile.lock
@@ -224,3 +226,5 @@ The Scanner will ignore the files listed in your `.gitignore` if you have one.
 - packages.config
 - paket.dependencies
 - packages.lock.json
+
+</details>
