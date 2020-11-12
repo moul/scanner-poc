@@ -35,7 +35,6 @@ In all cases the binary execution will generate the ZIP report in your working d
 Run the binary passing the list of repository folders  
 
 ```bash
-$ mkdir report && cd report
 $ ~/.bearer/bearer-cli local <path_to_source_code_root_folder_1> <path_to_source_code_root_folder_2>
 $ ls
 bearer-cli.zip
