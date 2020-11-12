@@ -15,67 +15,75 @@ The Scanner will go over all your files and look for patterns in your code that 
 
 ## How to use it
 
-You will find below options to runs the audit script.
-
-The script will:
-
-- Download the binary that will be used to generate the report
-- [Retrieve the repositories associated with your key and organization] (Option 2 to 5)
-- Generate the ZIP archive
-
-### Option 1
-
-You already have all the repositories locally.
-
-You can simply run this script and list the repositories. This will generate a ZIP that you will be able to send us
+We provide a script that will download the binary to ~/.bearer/bearer-cli
 
 ```bash
-$ curl https://raw.githubusercontent.com/Bearer/scanner-poc/main/script.sh \
-| bash -s -- <repository_1> [<repository_2>]
+$ curl "https://raw.githubusercontent.com/Bearer/scanner-poc/main/download.sh" | bash -s
+Downloading to ~/.bearer/bearer-cli
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 20.8M  100 20.8M    0     0  20.4M      0  0:00:01  0:00:01 --:--:-- 20.4M
+Please visit https://github.com/Bearer/scanner-poc/blob/main/README.md#how-to-use-it for the binary usage
 ```
+**To update binary** simply run `./download.sh` script again. It will overwrite the existing `~/.bearer/bearer-cli` file and set the executable flags.
 
-### Option 2 - GitHub
+## Binary usage
 
-You don't have the repositories locally and your code is on GitHub
+In all cases the binary execution will generate the ZIP report in your working directory. You then can send this ZIP to Bearer.sh.
+
+### You already have all the repositories locally. 
+
+Run the binary passing the list of repository folders  
 
 ```bash
-$ GITHUB=true \
-GITHUB_API_KEY=<read-access-token-to-list-your-repositories> \
-curl https://raw.githubusercontent.com/Bearer/scanner-poc/main/script.sh \
-| bash -s
+$ mkdir report && cd report
+$ ~/.bearer/bearer-cli local <path_to_source_code_root_folder_1> <path_to_source_code_root_folder_2>
+$ ls
+bearer-cli.zip
 ```
 
-### Option 3 - Self Hosted GitHub
+### You don't have the repositories locally
+We currently support the following remote git repositories: 
+* Github
+* Self Hosted Github
+* Gitlab
+* Self Hosted Gitlab
+
+The executable will download the list of repositories, run the scan and generate zip artifact. Examples on how to use binary for each case is shown below.
+
+
+#### Github
+
+```bash
+$ GITHUB_API_KEY=secret ~/.bearer/bearer-cli github mygithuborg/myrepo
+```
+
+You can generate your `read:org` only GitHub API key here: https://github.com/settings/tokens
+
+**Note** for ssh github access you might need to update your global git configuration in `~/.gitconfig` file by adding the following line:
+```toml
+[url "git@github.com:"]
+	insteadOf = https://github.com
+```
+
+#### Self Hosted Github
 
 Same as Option 2 except that you are have a Self Hosted version of GitHub
 
 ```bash
-$ GITHUB=true \
-GITHUB_URL=<your-github-instance> \
-GITHUB_API_KEY=<read-access-token-to-list-your-repositories> \
-curl https://raw.githubusercontent.com/Bearer/scanner-poc/main/script.sh \
-| bash -s
+$ GITHUB_URL=https://my.github.instance GITHUB_API_KEY=secret ~/.bearer/bearer-cli github mygithuborg/myrepo
 ```
 
-### Option 4 - GitLab
-
-You don't have the repositories locally and your code is on GitLab
+#### Gitlab
 
 ```bash
-$ GITLAB=true \
-GITLAB_API_KEY=<read-access-token-to-list-your-repositories> \
-curl https://raw.githubusercontent.com/Bearer/scanner-poc/main/script.sh \
-| bash -s
+$ GITLAB_API_KEY=secret ~/.bearer/bearer-cli gitlab mygitlaborg/myrepo
 ```
 
-### Option 5 - Self Hosted GitLab
+### Self Hosted GitLab
 
 ```bash
-$ GITLAB=true \
-GITLAB_URL=<your-gitlab-instance> \
-GITLAB_API_KEY=<read-access-token-to-list-your-repositories> \
-curl https://raw.githubusercontent.com/Bearer/scanner-poc/main/script.sh \
-| bash -s
+$ GITLAB_URL=https://my.gitlab.instance GITLAB_API_KEY=secret ~/.bearer/bearer-cli mygitluborg/myrepo
 ```
 
 ### Upload the script back to Bearer

@@ -30,6 +30,7 @@ if [ $os = 'darwin' ]; then
 fi
 
 if [ $os = 'linux' ]; then
+  arch="$(uname -m | awk '{print tolower($0)}')"
   case $arch in
   "i386")
     DOWNLOAD_URL="$URL_BASE/$os/386/bin/$BINARY_NAME"
@@ -47,60 +48,18 @@ if [ $os = 'linux' ]; then
   esac
 fi
 
-
-usage() {
-  notice "Example :  ./bearer-scanner -d <dir1> <dir2>"
-}
-
 downloadBinary() {
-  notice "Download the the bearer-cli binary from $DOWNLOAD_URL to ~/.bearer"
+  notice "Downloading to ~/.bearer/bearer-cli"
   mkdir -p ~/.bearer
   curl $DOWNLOAD_URL --output ~/.bearer/bearer-cli
   chmod u+x  ~/.bearer/bearer-cli
 }
 
 
-
-if [ $# -lt 1 ];then
-   notice "illegal number of parameters"
-   notice "Display supported parameters with -h option"
-   exit 1
-fi
-
-while getopts “:h?d:” opt; do
-  case $opt in
-    h)
-     usage
-     exit 0
-    ;;
-    d)
-      shift
-      repos=("$@");
-    ;;
-    * ) usage
-        exit 1
-  esac
-done
-
-if [ -z "$repos" ]
-then
-   usage
-   exit 0
-fi
-
 set -e
 
-tmpDir=/tmp/bearer-scanner
-rm -rf $tmpDir
-mkdir -p $tmpDir
-
-for repo in "${repos[@]}";do
-    realPath="$(cd $repo;pwd)"
-
-    outputName="$(echo ${realPath:1} | tr "/" "-" )"
-    downloadBinary
-    ~/.bearer/bearer-cli $realPath > "$tmpDir/$outputName.json"
-    rm -f bearer-cli.zip
-    zip -r -j bearer-cli.zip /tmp/bearer-scanner/*
-    notice "new report generated on => $(pwd)/bearer-cli.zip"
-done
+downloadBinary
+notice " \
+Please visit https://github.com/Bearer/scanner-poc/blob/main/README.md#how-to-use-it \
+for the binary usage
+"
