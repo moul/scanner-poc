@@ -31,7 +31,7 @@ Please visit https://github.com/Bearer/scanner-poc/blob/main/README.md#how-to-us
 
 In all cases the binary execution will generate the ZIP report in your working directory. You then can send this ZIP to Bearer.sh.
 
-### Option 1 - you already have all the repositories locally. 
+### You already have all the repositories locally. 
 
 Run the binary passing the list of repository folders  
 
@@ -42,47 +42,48 @@ $ ls
 bearer-cli.zip
 ```
 
-### Option 2 - fetching repositories from Github
+### You don't have the repositories locally
+We currently support the following remote git repositories: 
+* Github
+* Self Hosted Github
+* Gitlab
+* Self Hosted Gitlab
 
-You don't have the repositories locally and your code is on GitHub
+The executable will download the list of repositories, run the scan and generate zip articat examples on how to use binary for each case is shown below.
+
+
+#### Github
 
 ```bash
-$ GITHUB_API_KEY=secret ~/.bearer/bearer-cli github 
+$ GITHUB_API_KEY=secret ~/.bearer/bearer-cli github mygithuborg/myrepo
 ```
 
-You can generate your github api key here: https://github.com/settings/tokens
+You can generate your `read:org` only github api key here: https://github.com/settings/tokens
 
-### Option 3 - Self Hosted GitHub
+**Note** for ssh github access you might need to update your global git configuration in `~/.gitconfig` file by adding the following line:
+```toml
+[url "git@github.com:"]
+	insteadOf = https://github.com
+```
+
+#### Self Hosted Github
 
 Same as Option 2 except that you are have a Self Hosted version of GitHub
 
 ```bash
-$ GITHUB=true \
-GITHUB_URL=<your-github-instance> \
-GITHUB_API_KEY=<read-access-token-to-list-your-repositories> \
-curl https://raw.githubusercontent.com/Bearer/scanner-poc/main/script.sh \
-| bash -s
+$ GITHUB_URL=https://my.github.instance GITHUB_API_KEY=secret ~/.bearer/bearer-cli github mygithuborg/myrepo
 ```
 
-### Option 4 - GitLab
-
-You don't have the repositories locally and your code is on GitLab
+#### Gitlab
 
 ```bash
-$ GITLAB=true \
-GITLAB_API_KEY=<read-access-token-to-list-your-repositories> \
-curl https://raw.githubusercontent.com/Bearer/scanner-poc/main/script.sh \
-| bash -s
+$ GITLAB_API_KEY=secret ~/.bearer/bearer-cli gitlab mygitlaborg/myrepo
 ```
 
-### Option 5 - Self Hosted GitLab
+### Self Hosted GitLab
 
 ```bash
-$ GITLAB=true \
-GITLAB_URL=<your-gitlab-instance> \
-GITLAB_API_KEY=<read-access-token-to-list-your-repositories> \
-curl https://raw.githubusercontent.com/Bearer/scanner-poc/main/script.sh \
-| bash -s
+$ GITLAB_URL=https://my.gitlab.instance GITLAB_API_KEY=secret ~/.bearer/bearer-cli mygitluborg/myrepo
 ```
 
 # Annexes
