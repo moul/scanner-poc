@@ -30,6 +30,7 @@ if [ $os = 'darwin' ]; then
 fi
 
 if [ $os = 'linux' ]; then
+  arch="$(uname -m | awk '{print tolower($0)}')"
   case $arch in
   "i386")
     DOWNLOAD_URL="$URL_BASE/$os/386/bin/$BINARY_NAME"
@@ -49,7 +50,7 @@ fi
 
 
 usage() {
-  notice "Example :  ./bearer-scanner -d <dir1> <dir2>"
+  notice "Example :  ~/script.sh -d <dir1> <dir2>"
 }
 
 downloadBinary() {
@@ -94,13 +95,6 @@ tmpDir=/tmp/bearer-scanner
 rm -rf $tmpDir
 mkdir -p $tmpDir
 
-for repo in "${repos[@]}";do
-    realPath="$(cd $repo;pwd)"
+downloadBinary
 
-    outputName="$(echo ${realPath:1} | tr "/" "-" )"
-    downloadBinary
-    ~/.bearer/bearer-cli $realPath > "$tmpDir/$outputName.json"
-    rm -f bearer-cli.zip
-    zip -r -j bearer-cli.zip /tmp/bearer-scanner/*
-    notice "new report generated on => $(pwd)/bearer-cli.zip"
-done
+~/.bearer/bearer-cli local $repos
