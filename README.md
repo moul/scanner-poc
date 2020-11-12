@@ -18,7 +18,7 @@ The Scanner will go over all your files and look for patterns in your code that 
 We provide a script that will download the binary to ~/.bearer/bearer-cli
 
 ```bash
-./download.sh
+$ curl "https://raw.githubusercontent.com/Bearer/scanner-poc/main/download.sh" | bash -s
 Downloading to ~/.bearer/bearer-cli
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
