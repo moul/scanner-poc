@@ -54,7 +54,7 @@ The executable will download the list of repositories, run the scan and generate
 #### Github
 
 ```bash
-$ GITHUB_API_KEY=secret ~/.bearer/bearer-cli github mygithuborg/myrepo
+$ GITHUB_TOKEN=secret ~/.bearer/bearer-cli github mygithuborg/myrepo
 ```
 
 You can generate your `read:org` only GitHub API key here: https://github.com/settings/tokens
@@ -71,19 +71,19 @@ You can generate your `read:org` only GitHub API key here: https://github.com/se
 Same as Option 2 except that you are have a Self Hosted version of GitHub
 
 ```bash
-$ GITHUB_URL=https://my.github.instance GITHUB_API_KEY=secret ~/.bearer/bearer-cli github mygithuborg/myrepo
+$ GITHUB_URL=https://my.github.instance GITHUB_TOKEN=secret ~/.bearer/bearer-cli github mygithuborg/myrepo
 ```
 
 #### Gitlab
 
 ```bash
-$ GITLAB_API_KEY=secret ~/.bearer/bearer-cli gitlab mygitlaborg/myrepo
+$ GITLAB_TOKEN=secret ~/.bearer/bearer-cli gitlab mygitlaborg/myrepo
 ```
 
 ### Self Hosted GitLab
 
 ```bash
-$ GITLAB_URL=https://my.gitlab.instance GITLAB_API_KEY=secret ~/.bearer/bearer-cli mygitluborg/myrepo
+$ GITLAB_URL=https://my.gitlab.instance GITLAB_TOKEN=secret ~/.bearer/bearer-cli mygitluborg/myrepo
 ```
 
 ### Upload the script back to Bearer
