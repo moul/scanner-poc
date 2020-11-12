@@ -25,6 +25,7 @@ Downloading to ~/.bearer/bearer-cli
 100 20.8M  100 20.8M    0     0  20.4M      0  0:00:01  0:00:01 --:--:-- 20.4M
 Please visit https://github.com/Bearer/scanner-poc/blob/main/README.md#how-to-use-it for the binary usage
 ```
+## Binary usage
 
 ### Option 1
 
